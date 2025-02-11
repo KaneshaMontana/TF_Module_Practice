@@ -10,13 +10,11 @@ terraform {
     key    = "state/virtual_city.tfstate"
     region = "eu-west-2"
   }
-
 }
 
 provider "aws" {
   region = "eu-west-2"
 }
-
 
 module "vpc" {
   source   = "./vpc"
