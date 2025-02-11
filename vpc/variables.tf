@@ -38,6 +38,7 @@ variable "private_subnet_cidrs" {
   type        = list(string)
   default     = []
 }
+
 variable "private_subnet_name" {
   description = "The name of the private subnet"
   type = string

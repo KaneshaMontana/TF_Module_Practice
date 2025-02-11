@@ -1,14 +1,11 @@
- data "aws_ami" "amazon_linux_2023" {
+data "aws_ami" "linux" {
   most_recent = true
+
+  owners = ["amazon"]
 
   filter {
     name   = "name"
-    values = ["al2023-ami-2023.6.20241010.0-kernel-6.1-x86_64"]
-  }
-
-  filter {
-    name   = "platform"
-    values = ["amazon"]
+    values = ["al2023-ami-2023.*-x86_64"]
   }
 
   filter {
@@ -16,5 +13,6 @@
     values = ["hvm"]
   }
 
-  owners = ["amazon"] # Canonical
 }
+
+

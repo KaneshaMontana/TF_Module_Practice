@@ -6,21 +6,21 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = ""
-    key    = ""
-    region = ""
+    bucket = "ke-s3-bucket-in-aws"
+    key    = "state/virtual_city.tfstate"
+    region = "eu-west-2"
   }
 
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "eu-west-2"
 }
 
 
 module "vpc" {
   source   = "./vpc"
-  vpc_name = "kanesha-vpc-777"
+  vpc_name = "my-vpc-777"
 
   vpc_cidr             = "192.0.0.0/24"
   public_subnet_cidrs  = ["192.0.0.0/26", "192.0.0.64/26"]

@@ -1,12 +1,20 @@
-# resource "aws_nat_gateway" "base_nat" {
-#   allocation_id = aws_eip.base_eip.id
-#   subnet_id     = aws_subnet.my_public_subnet.id
+resource "aws_eip" "public_nat" {
+  count = length(var.public_subnet_cidrs)
 
-#   tags = merge({
-#     Name = " NAT Gateway"
-#   },
-#     var.common_tags
-#   )
+  domain   = "vpc"
+}
 
-#   depends_on = [aws_internet_gateway.base_igw]
-# }
+resource "aws_nat_gateway" "main_nat" {
+  count = length(var.public_subnet_cidrs)
+
+  allocation_id = aws_eip.public_nat[count.index].id
+  subnet_id     = aws_subnet.public[count.index].id
+
+  tags = merge({
+    Name = "my-nat-gw"
+  },
+    var.common_tags
+  )
+
+  depends_on = [aws_internet_gateway.main_igw]
+}

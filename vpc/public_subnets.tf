@@ -7,7 +7,7 @@ resource "aws_subnet" "public" {
 
   tags = merge(
     {
-    Name = "Public Subnet ${count.index + 1}"
+    Name = "my-public-subnet-${count.index + 1}"
   },
   var.common_tags
   )
@@ -23,14 +23,14 @@ resource "aws_route_table" "public_rt" {
 
   tags = merge(
      {
-    Name = "Public Route Table"
+    Name = "my-public-rt"
   },
     var.common_tags
   )
 }
 
 resource "aws_route_table_association" "public_rt_assoc" {
-  count          = length(aws_subnet.public)
+  count          = length(var.public_subnet_cidrs)
   subnet_id      = aws_subnet.public[count.index].id
   route_table_id = aws_route_table.public_rt.id
 }
