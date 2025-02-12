@@ -13,7 +13,7 @@ resource "aws_nat_gateway" "main_nat" {
   tags = merge({
     Name = "my-nat-gw"
   },
-    var.common_tags
+  var.common_tags
   )
 
   depends_on = [aws_internet_gateway.main_igw]

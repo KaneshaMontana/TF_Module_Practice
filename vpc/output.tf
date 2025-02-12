@@ -13,3 +13,13 @@ output "public_subnet_length" {
   description = "The number of public subnets created"
 }
 
+output "private_subnet_ids" {
+  value       = aws_subnet.private[*].id
+  description = "List of IDs of private subnets"
+}
+
+output "private_subnet_length" {
+  value       = length(aws_subnet.private[*].id)
+  description = "The number of private subnets created"
+}
+

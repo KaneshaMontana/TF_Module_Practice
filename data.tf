@@ -12,7 +12,6 @@ data "aws_ami" "linux" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
 }
 
 

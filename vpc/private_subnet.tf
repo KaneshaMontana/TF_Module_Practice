@@ -1,6 +1,7 @@
 
 resource "aws_subnet" "private" {
   count             = length(var.private_subnet_cidrs)
+
   vpc_id            = aws_vpc.main_vpc.id
   cidr_block        = var.private_subnet_cidrs[count.index]
   availability_zone = data.aws_availability_zones.available.names[count.index]
@@ -12,6 +13,7 @@ resource "aws_subnet" "private" {
   var.common_tags
   )
 }
+
 
 resource "aws_route_table" "private_rt" {
   count = length(var.private_subnet_cidrs)

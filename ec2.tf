@@ -8,10 +8,7 @@ resource "aws_instance" "my_example_instance" {
   tags = merge(
     {
       Name        = "my_instance-${count.index + 1}",
-      Environment = var.environment
     },
     local.my_resource_tags
   )
 }
-
-

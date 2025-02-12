@@ -2,22 +2,20 @@
 ## VPC
 #############################################################################
 
-
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
   type        = string
-  default     = ""
 }
 
 variable "vpc_name" {
   description = "The name of the VPC"
   type = string
-  default = "my_vpc"
 }
 
 #############################################################################
 ## Public Subnet
 #############################################################################
+
 variable "public_subnet_cidrs" {
   description = "CIDR blocks for public subnets"
   type        = list(string)
@@ -68,7 +66,9 @@ variable "nat_name" {
 ## Tags
 #############################################################################
 variable "common_tags" {
-  description = "The owner of the resources"
+  description = "A map of resource tags"
   type = map(string)
   default = {}
 }
+
+
