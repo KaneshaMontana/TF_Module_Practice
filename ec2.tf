@@ -7,8 +7,8 @@ resource "aws_instance" "my_example_instance" {
 
   tags = merge(
     {
-      Name        = "my_instance-${count.index + 1}",
+      Name = "my_instance-${count.index + 1}",
     },
-    local.my_resource_tags
+    var.my_resource_tags
   )
 }
